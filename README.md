@@ -1,6 +1,6 @@
 # GenomeBasedModel
 This is the page for an R package GenomeBasedModel.
-The package has been developed for estimating parameters of arbitrary biological statistical models and effects of genome-wide SNPs on the parameters simultaneously by building prior distributions based on the SNPs for the parameters.
+The package has been developed for estimating parameters of mathematical models and effects of genome-wide SNPs on the parameters simultaneously by building prior distributions based on the SNPs for the parameters.
 
 The latest version is 1.3.
 
