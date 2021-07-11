@@ -19,4 +19,4 @@ Please see the examples in GenomeBasedModel function of the package for the usag
 
 Scripts_Onogi(2020)Bioinformatics.zip includes all R and Cpp scripts rquired for the experiments in Onogi (2020) Bioinformatics which also will be good illustrations of the usage of the package.
 
-Examples also can be found in https://github.com/Onogi/IntegratingCGMwithGP.
+Examples also can be found in https://github.com/Onogi/IntegratingCGMwithGP which includes scripts used in "Integration of crop growth models and genomic prediction" by Akio Onogi, a chapter of "Genomic prediction of complex traits" editted by Nour Ahmadi and Jerome Bartholomé.
