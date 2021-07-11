@@ -18,3 +18,5 @@ Usage of the package is illustrated in the R documentations of the package.
 Please see the examples in GenomeBasedModel function of the package for the usage.
 
 Scripts_Onogi(2020)Bioinformatics.zip includes all R and Cpp scripts rquired for the experiments in Onogi (2020) Bioinformatics which also will be good illustrations of the usage of the package.
+
+Examples also can be found in https://github.com/Onogi/IntegratingCGMwithGP.
