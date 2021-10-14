@@ -7,12 +7,12 @@ The generalized algorithm and its superiority over existing methods are illustra
 The paper of Bioinformatics is not open access, but it's possible to share the paper privately through researchgate (https://www.researchgate.net/profile/Akio_Onogi).
 Please contact through researchgate if you have interests.
 
-The latest version is 1.3.
+The latest version is 1.4.
 tar.gz files are the source packages and .zip are the binary packages.
 
 Instration can be done following the standard procedure for R package instration.
 Rcpp and rrBLUP packages are required (the latter is for creating the genetic relationship matrix).
-Rcpp and rrBLUP versions of the tested environment are 1.0.0 and 4.6, respectively.
+Rcpp and rrBLUP versions of the tested environment are 1.0.7 and 4.6, respectively.
 
 Usage of the package is illustrated in the R documentations of the package.
 Please see the examples in GenomeBasedModel function of the package for the usage.
