@@ -1,7 +1,7 @@
 # GenomeBasedModel
 The package has been developed for estimating parameters of mathematical biological models and effects of genome-wide SNPs on the model parameters simultaneously by building prior distributions based on the SNPs for the parameters.
 
-The estimation framework is based on a variational Bayes-MCMC hybrid algorithm. The prototype of the framework can be found in Onogi et al. (2016) Theor. Appl. Genet. 129:805-817 (https://link.springer.com/article/10.1007%2Fs00122-016-2667-5). The generalized algorithm and its superiority over existing methods are illustrated in Onogi (2020) Bioinformatics (https://academic.oup.com/bioinformatics/advance-article/doi/10.1093/bioinformatics/btaa129/5758262). The paper of Bioinformatics is not open access, but it's possible to share privately through researchgate (https://www.researchgate.net/profile/Akio_Onogi). Please contact through researchgate if you have interests.
+The estimation framework is based on a variational Bayes-MCMC hybrid algorithm. The prototype of the framework can be found in Onogi et al. (2016) Theor. Appl. Genet. 129:805-817 (https://link.springer.com/article/10.1007%2Fs00122-016-2667-5). The generalized algorithm and its superiority over existing methods are illustrated in Onogi (2020) Bioinformatics (https://academic.oup.com/bioinformatics/advance-article/doi/10.1093/bioinformatics/btaa129/5758262).
 
 The latest version is 1.8. Several bugs were fixed, and imputation of missing observations were quited.
 
