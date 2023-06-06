@@ -1,0 +1,6 @@
+useDynLib(GenomeBasedModel)
+exportPattern("^[[:alpha:]]+")
+importFrom(Rcpp, evalCpp)
+export(GenomeBasedModel)
+importFrom(stats, sd, var, rnorm, runif)
+importFrom(rrBLUP, A.mat)

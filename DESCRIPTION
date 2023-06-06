@@ -1,0 +1,15 @@
+Package: GenomeBasedModel
+Type: Package
+Title: Building a genome-based model for biological models
+Version: 1.9
+Author: Akio Onogi
+Maintainer: Akio Onogi <onogiakio@gmail.com>
+Description: Builds a hierarchical Bayesian model that uses genome-wide SNPs for the prior distributions of the genotype-specific parameters of statistical models in biology. The function GenomeBasedModel regresses the model parameters on SNPs and infers the model parameters and SNP effects on the parameters jointly.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Depends: rrBLUP
+Imports: Rcpp
+LinkingTo: Rcpp
+NeedsCompilation: yes
+Packaged: 2018-07-24 10:36:07 UTC; Onogi Akio
