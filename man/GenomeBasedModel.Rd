@@ -134,14 +134,15 @@ GenomeBasedModel(Input, Freevec, Y, Missing, Np, Geno, Methodcode, Referencevalu
     \item 8 (GBLUP) : Nu (-2), S2 (0)
     \item 9 (Normal prior) : Mu (0), Var (10000)
     }
-  Default values are assigned to all hyperparameters and users can run the function without specifying hyperparameters. However, the default values do not ensure good performance of the model. Thus, users may need to tune the values, for example, using cross-validation. From my experience, BL, EBL, and BayesC work relatively well without tuning hyperparameters, and GBLUP is most insensitive to the choice of hyperparameters. When modifying the hyperparameters, note that the response variables (i.e., model parameters) are standardized in GWR.\cr
+  Default values are assigned to all hyperparameters and users can run the function without specifying hyperparameters. However, the default values do not ensure good performance of the model. Thus, users may need to tune the values, for example, using cross-validation. From my experience, BL, EBL, and BayesC work relatively well without tuning hyperparameters, and GBLUP is most insensitive to the choice of hyperparameters. When modifying the hyperparameters, note that the response variables (i.e., model parameters) are standardized in GWR.\cr\cr
   Kappa indicates the probability that markers have non-zero effects. Thus, BayesB can be used as BayesA by setting Kappa to 1. Similarly, BayesC is Bayesian ridge regression when Kappa is 1.
 }
 \value{
   \item{$Para}{A length Np list of MCMC samples of model parameters in MPI. For each parameter, a Nite_MPI_last/Thin x Ny matrix is returned.}
   \item{$ResidualVar}{A length Nite_MPI_last/Thin vector of MCMC samples of residual variances in MPI.}
   \item{$Loglike}{A length Nite_MPI_last/Thin vector of MCMC samples of log likelihood in MPI}
-  \item{$Genome}{A length Np list of estimated parameters in GWR. See the vignette of VIGoR package (available from CRAN) or the online pdf of the package (see references) for the details of the objects contained in the list. Generally, Beta denotes the posterior means of regression coefficients (SNP effects) and Alpha denotes the posterior means of coefficients for other covariates including the intercept. Sd.beta and Sd.alpha are the posterior standard deviations of these coefficients. Rho and Gamma denote the probability of each SNP to be included in the regression model. For GBLUP, U denotes the posterior means of genotypic values for each genotype and Sigma2 is the posterior mean of the variance component explained by U.}
+  \item{$Genome}{A length Np list of estimated parameters in GWR. See the vignette of VIGoR package (available from CRAN) or the online pdf of the package (see references) for the details of the objects contained in the list. Generally, Beta denotes the posterior means of regression coefficients (SNP effects) and Alpha denotes the posterior means of coefficients for other covariates including the intercept. Sd.beta and Sd.alpha are the posterior standard deviations of these coefficients. Rho and Gamma denote the probability of each SNP to be included in the regression model. For GBLUP, U denotes the posterior means of genotypic values for each genotype and Sigma2 is the posterior mean of the variance component explained by U.\cr\cr
+  Please note that all parameter estimates in GWR are returned in standardized scales. To scale back them, use the element "Scale" included in each list. The element includes the mean and standard deviations used for scaling. See Experiment 1 in the examples for scaling back.}
   \item{$Final}{A length 3 list. This contains the means and variances of the model parameters used in the last MPI fitting, and the residual variance(s) at the last MPI iteration. These objects are used as initial values when given as Initialvalues. See Examples (Experiment 3) for an example.}
   \item{$Nite}{A Nloop x Np matrix storing the numbers of iterations conducted in GWR.}
 }
@@ -275,6 +276,20 @@ plot(abs(Result.1$Genome[[2]]$Rho), main = "B", xlab = "SNPs", ylab = "Rho (incl
 abline(v = QTL[, 2], lty = 2)
 #Minor QTLs may be missed.
 
+#Scale the SNP effects to the original scales
+##Mean and SD used for scaling the first parameter (A)
+Result.1$Genome[[1]]$Scale
+##Scale back the SNP effects
+Result.1$Genome[[1]]$Beta * Result.1$Genome[[1]]$Scale[2]
+##Reconstruct the estimates of parameters (i.e., calculate the fitting values)
+Fittingvalues <- Result.1$Genome[[1]]$Scale[2] *
+  (crossprod(Geno[-1, ], matrix(Result.1$Genome[[1]]$Beta, ncol = 1)) +
+     Result.1$Genome[[1]]$Alpha[1]) +
+  Result.1$Genome[[1]]$Scale[1]
+##Compare the fitting values with the estimates
+##These are not consistent because residual errors are added to the fitting values
+plot(apply(Result.1$Para[[1]], 2, mean), Fittingvalues);abline(0, 1)
+
 #Use the PassMatrix option
 Model.PassMatrix <- function(input, freevec, parameters){
 
@@ -305,6 +320,7 @@ plot(apply(Result.1.PassMatrix$Para[[1]], 2, mean),
 plot(apply(Result.1.PassMatrix$Para[[2]], 2, mean),
      apply(Result.1$Para[[2]], 2, mean));abline(0, 1)
 }
+
 
 #Experiment 2###################################################################################
 \dontrun{
