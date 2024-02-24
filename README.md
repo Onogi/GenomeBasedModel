@@ -3,7 +3,7 @@ The package has been developed for estimating parameters of mathematical biologi
 
 The estimation framework is based on a variational Bayes-MCMC hybrid algorithm. The prototype of the framework can be found in Onogi et al. (2016) Theor. Appl. Genet. 129:805-817 (https://link.springer.com/article/10.1007%2Fs00122-016-2667-5). The generalized algorithm and its superiority over existing methods are illustrated in Onogi (2020) Bioinformatics (https://academic.oup.com/bioinformatics/advance-article/doi/10.1093/bioinformatics/btaa129/5758262).
 
-The latest version is 1.8. Several bugs were fixed, and imputation of missing observations were quited.
+The latest version is 1.9. Means and standard deviations used for scaling genome-wide regression parameters are output. These values can be used for calculating the fitting values of parameters. See Experiment 1 of the examples of GenomeBasedModel.
 
 For installation, Rcpp and rrBLUP packages are required (the latter is for creating the genetic relationship matrix). Rcpp and rrBLUP versions of the tested environment are 1.0.7 and 4.6, respectively.
 
