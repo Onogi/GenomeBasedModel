@@ -619,6 +619,9 @@ GenomeBasedModel <- function(Input, Freevec, Y, Missing, Np, Geno, Methodcode, R
                                      Sigma2.u = Result.GWR[[para]][[47]])
                                 )
     }
+    #Means and standard deviations to scale back GWR parameters
+    List.markers[[para]]$Scale <- Scalingvalues[para, ]
+    names(List.markers[[para]]$Scale) <- c("Mean", "SD")
   }
   SampledPara <- matrix(SampledPara, ncol = Ny)
   List.parameters <- as.list(numeric(Np))
